@@ -120,7 +120,7 @@ sudo systemctl restart docker
 sudo docker info
 ```
 
-![image-20200618101005334](docker安装.assets/image-20200618101005334.png)
+![image-20200618101005334](docker学习笔记.assets/image-20200618101005334.png)
 
 # 常用命令
 
@@ -128,9 +128,11 @@ docker image build -t tagName:version .
 
 docker container run -dp 8080:80 --name containerName imageName
 
+```bash
+# 复制
 docker cp containerName:/var/xxx ./xxx
-
 docker cp ./xxx containerName:/var/xxx
+```
 
 ```bash
 # 删除<none>镜像
@@ -180,3 +182,10 @@ RUN echo "Asia/Shanghai" > /etc/timezone
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN echo "Asia/Shanghai" > /etc/timezone
 ```
+
+## 复制
+
+```dockerfile
+COPY --chown=user:usergroup ./xxx containerName:/xxx
+```
+
