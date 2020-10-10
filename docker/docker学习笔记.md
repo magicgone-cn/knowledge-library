@@ -186,6 +186,16 @@ RUN echo "Asia/Shanghai" > /etc/timezone
 ## 复制
 
 ```dockerfile
-COPY --chown=user:usergroup ./xxx containerName:/xxx
+COPY --chown=user:usergroup ./xxx /xxx
+```
+
+# docker-compose常用指令
+
+## 启动空的Linux
+
+```yml
+# docker conainer run -it
+stdin_open: true
+tty: true
 ```
 
