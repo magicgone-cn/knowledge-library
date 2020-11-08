@@ -32,6 +32,8 @@ sudo systemctl enable docker
 
 ### docker-compose(可选)
 
+#### pip安装（不推荐）
+
 ```bash
 yum -y install epel-release
 yum -y install python-pip
@@ -44,7 +46,13 @@ pip install docker-compose
 > Cannot uninstall 'subprocess32'. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.
 
 ```bash
-sudo pip install nibabel --ignore-installed nibabel
+sudo pip install subprocess32 --ignore-installed subprocess32
+```
+
+### 直接下载(推荐)
+
+```bash
+curl -L https://github.com/docker/compose/releases/download/1.26.2/docker-compose-Linux-x86_64 > /usr/bin/docker-compose
 ```
 
 ### 远程连接(可选)
