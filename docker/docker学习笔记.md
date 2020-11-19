@@ -182,6 +182,8 @@ docker container run -it {image} /bin/sh
 
 ## 设置时区
 
+### 方式一：dockerfile
+
 ```dockerfile
 # 设置时区 unbuntu
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
@@ -190,6 +192,12 @@ RUN echo "Asia/Shanghai" > /etc/timezone
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN echo "Asia/Shanghai" > /etc/timezone
 ```
+
+### 方式二：环境变量
+
+TZ: Asia/Shanghai
+
+大部分镜像都支持？
 
 ## 复制
 
