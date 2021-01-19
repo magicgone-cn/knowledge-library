@@ -56,6 +56,36 @@ for /r %i in (*.lastUpdated) do del %i
 ## 上传私有仓库
 
 ```bash
-mvn deploy:deploy-file -e -Dfile=D:\文档资料\项目资料\部门\新医保\模板工程搭建依赖\hsa-cep-ivc-local-api-1.2.0-SNAPSHOT.jar -DgroupId=cn.hsa.cep.ivc -DartifactId=hsa-cep-ivc-local-api -Dversion=1.2.0-SNAPSHOT -Durl=http://192.168.13.86:6081/repository/maven-snapshots/ -Dpackaging=jar -DrepositoryId=hsaf-sinobest-snapshots
+mvn deploy:deploy-file -e -Dfile=D:\文档资料\项目资料\部门\新医保\模板工程搭建依赖\hsa-cep-ivc-local-api-1.2.0-SNAPSHOT.jar -DgroupId=cn.hsa.cep.ivc -DartifactId=hsa-cep-ivc-local-api -Dversion=1.2.0-SNAPSHOT -Durl=http://192.168.13.86:6081/repository/maven-snapshots/ -Dpackaging=jar -DrepositoryId=hsaf-sinobest-snapshots -DpomFile=xxxx
+```
+
+```
+批量上传依赖包至nexus服务器(未验证)
+由于nexus 不能访问外网，不能设置互联网依赖包代理，待开发将项目在个人电脑编译通过后将的repository,上传到nexus内网机器上，通过脚本将repository目录下的依赖包批量上传到nexus服务器上。
+ 
+执行命令：nohup /root/mavenimport.sh -u admin -p Test@123 -r http://173.16.184.82:8081/repository/maven-releases/ &
+ 
+nohup /root/mavenimport.sh -u admin -p Test@123 -r http://173.16.184.82:8081/repository/maven-snapshots/ &
+ 
+ 
+ 
+[root@host-173-16-184-82 ~]# cat mavenimport.sh  
+#!/bin/bash
+# copy and run this script to the root of the repository directory containing files
+# this script attempts to exclude uploading itself explicitly so the script name is important
+# Get command line params
+ 
+while getopts ":r:u:p:" opt; do
+        case $opt in
+                r) REPO_URL="$OPTARG"
+                ;;
+                u) USERNAME="$OPTARG"
+                ;;
+                p) PASSWORD="$OPTARG"
+                ;;
+        esac
+done
+ 
+find . -type f  -not -path './nohup\.out*'  -not -path './mavenimport\.sh*' -not -path '*/\.*' -not -path '*/\^archetype\-catalog\.xml*' -not -path '*/\^maven\-metadata\-local*\.xml' -not -path '*/\^maven\-metadata\-deployment*\.xml' | sed "s|^\./||" | xargs -I '{}' curl -u "$USERNAME:$PASSWORD" -X PUT -v -T {} ${REPO_URL}/{} ;
 ```
 

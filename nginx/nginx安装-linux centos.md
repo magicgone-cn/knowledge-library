@@ -41,6 +41,12 @@ sudo systemctl reload nginx
 sudo vim /etc/nginx/conf.d/default.conf
 ```
 
+> 在主配置文件中引用其他配置文件
+
+```nginx
+include /usr/local/nginx/conf/default.d/*.conf;
+```
+
 ## web目录
 
 ```bash
@@ -59,6 +65,12 @@ setsebool -P httpd_can_network_connect 1
 
 ```nginx
 client_max_body_size 20M;
+```
+
+### 找不到配置文件
+
+```bash
+nginx -t
 ```
 
 ## 遗留问题

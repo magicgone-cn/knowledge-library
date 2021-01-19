@@ -215,3 +215,9 @@ stdin_open: true
 tty: true
 ```
 
+# 私有仓库搭建
+
+```bash
+docker run -dp 5000:5000 --name docker-registry -v docker-registry:/var/lib/registry registry
+```
+

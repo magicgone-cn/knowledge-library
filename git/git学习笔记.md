@@ -31,3 +31,20 @@ git config --global core.autocrlf input
 git仓库中全部为LF；从仓库中检出为LF，且不会自动转换导致文件损坏；文件编辑时，自动转换为LF；部分CRLF格式文件未编辑，直接上传，本地不提示且本地编码仍未CRLF，但仓库为LF，其他人检出时，为LF。
 
 不强制要求先转为LF在上传，避免大量文件上传时，修改格式工作量不小，且无太大意义。
+
+# 常用命令
+
+## 设置提交人信息
+
+```shell
+git config user.name 姓名
+git config user.email 邮箱
+```
+
+```shell
+git config --global user.name 姓名
+git config --global user.email 邮箱
+```
+
+
+
