@@ -2,6 +2,12 @@
 
 ## 使用docker安装
 
+> 快速启动
+```sh
+docker container run --name mysql -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=a -dp 3306:3306 mysql:5.7 --lower_case_table_names=1
+```
+
+> docker-compose
 ```yaml
 mysql-8.0:
   image: mysql:8.0
