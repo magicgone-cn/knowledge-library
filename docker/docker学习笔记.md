@@ -221,3 +221,32 @@ tty: true
 docker run -dp 5000:5000 --name docker-registry -v docker-registry:/var/lib/registry registry
 ```
 
+## http
+
+```json
+"insecure-registries": [registry.mine]
+```
+
+## https
+
+将自签名ssl证书放到以下目录 /etc/docker/certs.d/{域名}/xxx.crt
+
+# 使用代理拉取镜像
+
+```bash
+set HTTP_PROXY=socks5://127.0.0.1:1080
+set HTTPS_PROXY=socks5://127.0.0.1:1080
+set NO_PROXY=
+```
+
+长期使用，可以设置环境变量在文件中
+
+/etc/systemd/system/docker.service.d/http-proxy.conf
+
+```
+[Service]
+Environment="HTTP_PROXY=socks5://socks5.sb.sinobest.cn:1080/"
+Environment="HTTPS_PROXY=socks5://socks5.sb.sinobest.cn:1080/"
+Environment="NO_PROXY=*.aliyuncs.com,*.docker.io,*.docker.com,*.sinobest.cn"
+```
+

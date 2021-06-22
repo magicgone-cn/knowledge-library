@@ -59,6 +59,17 @@ for /r %i in (*.lastUpdated) do del %i
 mvn deploy:deploy-file -e -Dfile=D:\文档资料\项目资料\部门\新医保\模板工程搭建依赖\hsa-cep-ivc-local-api-1.2.0-SNAPSHOT.jar -DgroupId=cn.hsa.cep.ivc -DartifactId=hsa-cep-ivc-local-api -Dversion=1.2.0-SNAPSHOT -Durl=http://192.168.13.86:6081/repository/maven-snapshots/ -Dpackaging=jar -DrepositoryId=hsaf-sinobest-snapshots -DpomFile=xxxx
 ```
 
+```bat
+set groupId=cn.hsa.powersi
+set artifactId=hsa-powersi-base
+set version=1.0.0-SNAPSHOT
+set file=D:\文档资料\项目资料\部门\新医保\模板工程搭建依赖\hsa-powersi-base-1.0.0-SNAPSHOT.jar
+set pomFile=D:\文档资料\项目资料\部门\新医保\模板工程搭建依赖\hsa-powersi-base-1.0.0-SNAPSHOT.pom
+set url=http://192.168.13.86:6081/repository/maven-snapshots/
+set repositoryId=hsaf-sinobest-snapshots
+mvn deploy:deploy-file -e -Dfile=%file% -DgroupId=%groupId% -DartifactId=%artifactId% -Dversion=%version% -Durl=%url% -Dpackaging=jar -DrepositoryId=%repositoryId% -DpomFile=%pomFile%
+```
+
 ```
 批量上传依赖包至nexus服务器(未验证)
 由于nexus 不能访问外网，不能设置互联网依赖包代理，待开发将项目在个人电脑编译通过后将的repository,上传到nexus内网机器上，通过脚本将repository目录下的依赖包批量上传到nexus服务器上。

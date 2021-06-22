@@ -56,3 +56,14 @@ set session transaction isolation level read committed;
 -- 设置全局事务隔离级别
 set global transaction isolation level read committed;
 ```
+
+# sql_mode
+
+3065 - Expression #1 of ORDER BY clause is not in SELECT list, references column which is not in SELECT list; this is incompatible with DISTINCT
+
+```sql
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY,',''));
+SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY,',''));
+```
+
+默认的sql_mode=ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
