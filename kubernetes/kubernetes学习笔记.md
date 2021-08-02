@@ -136,6 +136,10 @@ kubeadm join 192.168.13.86:6443 --token xxxx --discovery-token-ca-cert-hash sha2
 kubeadm token create --print-join-command
 ```
 
+# 添加metric
+
+从官网安装metric，deployment/metrics-server启动参数注意添加-kubelet-insecure-tls，避免校验https证书
+
 # Context
 
 > ~/.kube/config
