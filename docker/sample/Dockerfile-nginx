@@ -1,0 +1,8 @@
+FROM nginx
+# 设置时区
+ENV TZ Asia/Shanghai
+# 安装unzip
+RUN apt-get update && apt-get install zip -y
+# 复制war包并解压
+COPY *.war /app/
+RUN unzip -o /app/*.war -d /usr/share/nginx/html && rm -rf /app

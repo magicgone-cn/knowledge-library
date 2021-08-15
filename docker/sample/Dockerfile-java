@@ -1,0 +1,9 @@
+FROM openjdk:8
+# 设置时区
+ENV TZ Asia/Shanghai
+ENV JAVA_OPTS ""
+ENV workdir /app
+# 切换工作目录
+WORKDIR ${workdir}
+COPY *.jar ${workdir}/
+ENTRYPOINT ["sh","-ec","exec java ${JAVA_OPTS} -jar *.jar"]
