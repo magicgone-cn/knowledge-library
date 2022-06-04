@@ -12,5 +12,7 @@ git config --global --unset http.https://github.com.proxy)
 
 > ~/.ssh/config
 
+```
 Host github.com
 ProxyCommand connect -S 127.0.0.1:1080 %h %p
+```
