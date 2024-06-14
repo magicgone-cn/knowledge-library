@@ -1,0 +1,2 @@
+group_concat 多行转单行
+unnest 单行转多行
