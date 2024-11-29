@@ -149,3 +149,8 @@ kubeadm token create --print-join-command
 ```bash
 kubectl run --rm -it busybox --image busybox --restart=Never
 ```
+
+# 查看日志
+```bash
+journalctl -u kubelet -f
+```
